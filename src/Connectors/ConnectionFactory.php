@@ -53,7 +53,7 @@ class ConnectionFactory implements ConnectionFactoryInterface
      */
     protected $excludedLogParams = array('password');
 
-    public function __construct($connectionClassName = null, LoggerInterface $logger = null)
+    public function __construct($connectionClassName = null, ?LoggerInterface $logger = null)
     {
         if ($connectionClassName) {
             $this->connectionClassName = $connectionClassName;

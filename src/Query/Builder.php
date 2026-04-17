@@ -193,7 +193,7 @@ class Builder
      * @param  array $columns
      * @return $this
      */
-    public function select($columns = array('*'))
+    public function select(array $columns = array('*'))
     {
         $this->columns = is_array($columns) ? $columns : func_get_args();
 
@@ -1134,7 +1134,7 @@ class Builder
      * @param  array $columns
      * @return mixed|static
      */
-    public function find($id, $columns = array('*'), $column = 'id')
+    public function find($id, array $columns = array('*'), $column = 'id')
     {
         return $this->where($column, '=', $id)->first($columns);
     }
@@ -1158,7 +1158,7 @@ class Builder
      * @param  array $columns
      * @return mixed|static
      */
-    public function first($columns = array('*'))
+    public function first(array $columns = array('*'))
     {
         $results = $this->limit(1)->get($columns);
 
@@ -1171,7 +1171,7 @@ class Builder
      * @param  array $columns
      * @return array|static[]
      */
-    public function get($columns = array('*'))
+    public function get(array $columns = array('*'))
     {
         if (is_null($this->columns)) $this->columns = $columns;
 
@@ -1184,7 +1184,7 @@ class Builder
      * @param callable $builder
      * @return \PDOStatement
      */
-    public function infile($file, $columns, Closure $builder = null)
+    public function infile($file, $columns, ?Closure $builder = null)
     {
         $clause = new InfileClause($file, $columns);
 
@@ -1203,7 +1203,7 @@ class Builder
      * @param Closure $builder
      * @return Builder
      */
-    public function intoOutfile($file, Closure $builder = null)
+    public function intoOutfile($file, ?Closure $builder = null)
     {
         return $this->outfile('outfile', $file, $builder);
     }
@@ -1213,7 +1213,7 @@ class Builder
      * @param Closure $builder
      * @return Builder
      */
-    public function intoDumpfile($file, Closure $builder = null)
+    public function intoDumpfile($file, ?Closure $builder = null)
     {
         return $this->outfile('dumpfile', $file, $builder);
     }
@@ -1242,7 +1242,7 @@ class Builder
      * @param  array $columns
      * @return \PDOStatement
      */
-    public function query($columns = array('*'))
+    public function query(array $columns = array('*'))
     {
         if (is_null($this->columns)) $this->columns = $columns;
 
@@ -1444,7 +1444,7 @@ class Builder
      * @param  array $columns
      * @return mixed
      */
-    public function aggregate($function, $columns = array('*'))
+    public function aggregate($function, array$columns = array('*'))
     {
         $this->aggregate = compact('function', 'columns');
 

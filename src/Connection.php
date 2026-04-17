@@ -83,7 +83,7 @@ class Connection implements ConnectionInterface
      * @param ExceptionHandlerInterface $exceptionHandler
      * @param string $tablePrefix
      */
-    public function __construct(PDO $pdo = null, Grammar $queryGrammar = null, ExceptionHandlerInterface $exceptionHandler = null, $tablePrefix = '')
+    public function __construct(?PDO $pdo = null, ?Grammar $queryGrammar = null, ?ExceptionHandlerInterface $exceptionHandler = null, $tablePrefix = '')
     {
         $this->pdo = $pdo;
 

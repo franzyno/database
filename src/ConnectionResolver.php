@@ -38,7 +38,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @param  array $connections
      * @param ConnectionFactoryInterface $connectionFactory
      */
-    public function __construct(array $connections = array(), ConnectionFactoryInterface $connectionFactory = null)
+    public function __construct(array $connections = array(), ?ConnectionFactoryInterface $connectionFactory = null)
     {
         $this->connectionFactory = $connectionFactory ?: new ConnectionFactory();
 
@@ -53,7 +53,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @param  string $name
      * @return \Database\Connection
      */
-    public function connection($name = null)
+    public function connection(?string $name = null)
     {
         if (is_null($name)) $name = $this->getDefaultConnection();
 
@@ -71,7 +71,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @param $name
      * @return mixed
      */
-    public function newConnection($name = null)
+    public function newConnection(?string $name = null)
     {
         if (is_null($name)) $name = $this->getDefaultConnection();
 
@@ -84,7 +84,7 @@ class ConnectionResolver implements ConnectionResolverInterface
      * @param  string $name
      * @return array
      */
-    public function connectionConfig($name = null)
+    public function connectionConfig(?string $name = null)
     {
         if (is_null($name)) $name = $this->getDefaultConnection();
 
